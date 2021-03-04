@@ -1,0 +1,28 @@
+table, td, th{
+    border: 1px solid black;
+}
+
+td{
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.green{
+    background-color: lawngreen;
+}
+
+.gray{
+    background-color: gray;
+}
+
+.red{
+    background-color: red;
+}
+
+body{
+    background-color: turquoise;
+}
