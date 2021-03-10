@@ -1,0 +1,12 @@
+p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+input{
+    border-radius: 5%;
+}
+form{
+    background-color: chartreuse;
+}
+body{
+    background-color: darkgreen;
+}
