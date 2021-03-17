@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        select{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Primer numero:</p>
+    <input type="number" id="n1" value="0">
+    <p>Segundo numero:</p>
+    <input type="number" id="n2" value="0">
+    <br/>
+    <select id="operacion">
+        <option>Seleccioné una operación</option>
+        <option value=1>Suma</option>
+        <option value=2>Resta</option>
+        <option value=3>Multiplicación</option>
+        <option value=4>División</option>
+    </select>
+    <br/>
+    <button onclick="f()">Calcular</button>
+    <p id="resultado">Resultado: </p>
+
+    <script>
+
+        const f = () => {
+
+            let n1 = parseInt(document.getElementById("n1").value);
+            let n2 = parseInt(document.getElementById("n2").value);
+            let operacion = document.getElementById("operacion").value;
+            let r;
+
+            if(operacion == 1) r = n1 + n2;
+            else if(operacion == 2) r = n1 - n2;
+            else if(operacion == 3) r = n1 * n2;
+            else if(operacion == 4) r = n1 / n2;
+            else r = "No seleccionó una operación";
+
+            document.getElementById("resultado").innerHTML = "Resultado: "+r;
+        }
+    </script>
+</body>
+</html>
