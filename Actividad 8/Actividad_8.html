@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hola</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        input,button {
+            border-radius: 5%;
+            padding: 10px;
+        }
+        select{
+            margin: 15px;
+            padding: 10px;
+        }
+        label{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <label for="nombre">Nombre:</label>
+    <input type="text" placeholder="Nombre aquí" id="name" name="nombre">
+    <br/>
+    <label for="sexo">Sexo:</label>
+    <select name="sexo" id="sexo">
+        <option value=0>Femenino</option>
+        <option value=1>Masculino</option>
+    </select>
+    <br/>
+    <button onclick="saludo()">Enviar</button>
+    <h1 id="saludo"></h1>
+    <script>
+        const saludo = () => {
+            let name = document.getElementById("name").value;
+            let sexo = parseInt(document.getElementById("sexo").value);
+            if(sexo) document.getElementById("saludo").innerHTML = `Bienvenido, ${name}`
+            else document.getElementById("saludo").innerHTML = `Bienvenida, ${name}`
+        }
+    </script>
+</body>
+</html>
