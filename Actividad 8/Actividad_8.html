@@ -35,8 +35,8 @@
         const saludo = () => {
             let name = document.getElementById("name").value;
             let sexo = parseInt(document.getElementById("sexo").value);
-            if(sexo) document.getElementById("saludo").innerHTML = `Bienvenido, ${name}`
-            else document.getElementById("saludo").innerHTML = `Bienvenida, ${name}`
+            let hola = sexo ? "Bienvenido" : "Bienvenida";
+            document.getElementById("saludo").innerHTML = `${hola}, ${name}`
         }
     </script>
 </body>
