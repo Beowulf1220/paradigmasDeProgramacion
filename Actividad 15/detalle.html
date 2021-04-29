@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Detalle</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+    <h1 id="title"></h1>
+    <img id="image">
+
+    <br>
+    <a href="index.html">Volver a la pagina principal</a>
+
+    <script>
+        const local = new URL(window.location.href);
+        const parameters = local.searchParams;
+        const id = parameters.get('id');
+
+        const url = `https://jsonplaceholder.typicode.com/photos/${id}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(post => {
+                document.getElementById("title").innerHTML = post.title;
+                document.getElementById("image").src = post.thumbnailUrl;
+            });
+    </script>
+</body>
+</html>
