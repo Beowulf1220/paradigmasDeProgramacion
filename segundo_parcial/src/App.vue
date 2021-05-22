@@ -17,12 +17,17 @@
         Autor:
         <input type="text" v-model="autor" />
 
+        <br/>
+
+        Portada:
+        <input type="text" v-model="portada" />
+
         <button type="submit" class="add">
         {{ estatusEditar ? "Editar" : "Agregar" }}
         </button>
         <button
           v-if="estatusEditar"
-          @click="(estatusEditar = false), (isbn = '',titulo = '',autor = '')"
+          @click="(estatusEditar = false), (isbn = '',titulo = '',autor = '', portada = '')"
         >
           Cancelar
         </button>
@@ -34,15 +39,24 @@
       v-if="cargando"
     />
 
-    {{ estatusEditar }}
+    Editando: {{ estatusEditar }}
 
-    <ul>
-      <il v-for="todo in todos" :key="todo.id">
-        {{ todo.isbn }} {{ todo.titulo }} {{ todo.autor }} 
+    <table>
+      <tr>
+        <th>Isbn</th>
+        <th>Titulo</th>
+        <th>Autor</th>
+        <th>Portada</th>
+        <th>Opciones</th>
+      </tr>
+      <tr v-for="todo in todos" :key="todo.id">
+        <td>{{ todo.isbn }}</td> <td>{{ todo.titulo }}</td> <td>{{ todo.autor }}</td> <td><img v-bind:src="todo.portada" height="200" alt="{{todo.titulo}}"></td>
+        <td>
         <button @click="deleteTodo(todo)">Eliminar</button>
         <button @click="selectTodo(todo)">Editar</button>
-      </il>
-    </ul>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -58,6 +72,7 @@ export default {
       isbn: "",
       titulo: "",
       autor: "",
+      portada: "",
       cargando: false,
       estatusEditar: false,
     };
@@ -81,10 +96,12 @@ export default {
         isbn: this.isbn,
         titulo: this.titulo,
         autor: this.autor,
+        portada: this.portada,
       });
       this.isbn = ""
       this.titulo = "";
       this.autor = "";
+      this.portada = "";
       this.listarTodos();
     },
     async deleteTodo(todo) {
@@ -97,12 +114,14 @@ export default {
       this.isbn = todo.isbn;
       this.titulo = todo.titulo;
       this.autor = todo.autor;
+      this.portada = todo.portada;
     },
     async updateTodo() {
       await db.collection("todos").doc(this.id).set({
         isbn: this.isbn,
         titulo: this.titulo,
         autor: this.autor,
+        portada: this.portada,
       });
 
       this.estatusEditar = false;
@@ -110,6 +129,7 @@ export default {
       this.isbn = "";
       this.titulo = "";
       this.autor = "";
+      this.portada = "";
       this.listarTodos();
     },
   },
@@ -126,7 +146,7 @@ body {
 .center {
   margin-top: 10px;
   height: auto;
-  width: 60%;
+  width: 80%;
   background: black;
   border-radius: 2%;
 }
@@ -140,8 +160,28 @@ body {
   font-family: cursive;
   font-size: 18px;
 }
+table {
+   width: 100%;
+   border: 1px solid forestgreen;
+}
+th, td {
+   width: 25%;
+   text-align: center;
+   border: 1px solid green;
+   border-collapse: collapse;
+   padding: 0.3em;
+   caption-side: bottom;
+}
+caption {
+   padding: 0.3em;
+   color: #fff;
+    background: #000;
+}
+th {
+   background: black;
+}
 h1{
-  color:yellowgreen;
+  color:burlywood;
   font-size: 200%;
 }
 ul {
